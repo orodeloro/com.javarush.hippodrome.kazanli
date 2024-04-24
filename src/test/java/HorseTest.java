@@ -14,44 +14,36 @@ class HorseTest {
     @Test
     void testExpectedException_WhenConstructorFirstArgNull() {
 
-        Throwable exсeption = assertThrows(IllegalArgumentException.class,
-                () -> {
-                    new Horse(null, 1, 1);
-                });
+        Throwable exception = assertThrows(IllegalArgumentException.class,
+                () -> new Horse(null, 1, 1));
 
-        assertEquals("Name cannot be null.", exсeption.getMessage());
+        assertEquals("Name cannot be null.", exception.getMessage());
     }
 
     @ParameterizedTest
     @ValueSource(strings = {" ", "", "\t", "\n", "\r"})
     void testExpectedException_WhenConstructorFirstArgIsBlank(String name) {
         Throwable exception = assertThrows(IllegalArgumentException.class,
-                () -> {
-                    new Horse(name, 1, 1);
-                });
+                () -> new Horse(name, 1, 1));
         assertEquals("Name cannot be blank.", exception.getMessage());
     }
 
     @Test
     void testExpectedException_WhenConstructorSecondArgNegative() {
 
-        Throwable exсeption = assertThrows(IllegalArgumentException.class,
-                () -> {
-                    new Horse("Конь", -1, 1);
-                });
+        Throwable exception = assertThrows(IllegalArgumentException.class,
+                () -> new Horse("Конь", -1, 1));
 
-        assertEquals("Speed cannot be negative.", exсeption.getMessage());
+        assertEquals("Speed cannot be negative.", exception.getMessage());
     }
 
     @Test
     void testExpectedException_WhenConstructorThirdArgNegative() {
 
-        Throwable exсeption = assertThrows(IllegalArgumentException.class,
-                () -> {
-                    new Horse("Конь", 1, -1);
-                });
+        Throwable exception = assertThrows(IllegalArgumentException.class,
+                () -> new Horse("Конь", 1, -1));
 
-        assertEquals("Distance cannot be negative.", exсeption.getMessage());
+        assertEquals("Distance cannot be negative.", exception.getMessage());
     }
 
     @Test
